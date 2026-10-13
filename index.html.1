@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>একতার সংবাদ | সর্বশেষ খবর, ব্রেকিং নিউজ</title>
+<meta name="description" content="একতার সংবাদ – জাতীয়, রাজনীতি, অর্থনীতি, আন্তর্জাতিক, খেলা, বিনোদনসহ সর্বশেষ বাংলা খবর।">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Noto+Serif+Bengali:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f4f6f4; --surface:#ffffff; --ink:#16202a; --muted:#5a6770; --line:#dde3df;
+  --brand:#0a5d3a; --brand-deep:#064027; --brand-ink:#ffffff; --accent:#d62839; --soft:#eaf3ee;
+  --serif:"Noto Serif Bengali","Hind Siliguri",Georgia,serif;
+  --sans:"Hind Siliguri","Noto Sans Bengali",system-ui,-apple-system,"Segoe UI",sans-serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0e1412; --surface:#17201c; --ink:#e7eee9; --muted:#9aa9a1; --line:#2a3631;
+    --brand:#14804f; --brand-deep:#0a3d27; --soft:#1b2a23; --accent:#ff5566;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0e1412; --surface:#17201c; --ink:#e7eee9; --muted:#9aa9a1; --line:#2a3631;
+  --brand:#14804f; --brand-deep:#0a3d27; --soft:#1b2a23; --accent:#ff5566;
+}
+html{height:100%;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 56px)}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;min-height:100%;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+a:hover .t, .link:hover{color:var(--brand)}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:4px}
+.wrap{max-width:1200px;margin:0 auto;padding:0 16px}
+h1,h2,h3,h4{margin:0}
+.t{font-family:var(--serif);font-weight:700;line-height:1.4}
+
+/* top strip */
+.strip{background:var(--brand-deep);color:#d6e6dd;font-size:13px}
+.strip .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:34px;flex-wrap:wrap}
+.strip nav{display:flex;gap:16px}
+.strip a:hover{color:#fff;text-decoration:underline}
+
+/* masthead */
+.mast{background:var(--surface);border-bottom:1px solid var(--line)}
+.mast .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-top:14px;padding-bottom:14px}
+.logo{display:flex;align-items:center;gap:12px}
+.logo svg{width:46px;height:46px;flex:none}
+.logo b{display:block;font-family:var(--serif);font-weight:800;font-size:34px;line-height:1.1;color:var(--brand);letter-spacing:-.2px}
+.logo small{display:block;font-size:13px;color:var(--muted);margin-top:2px}
+.tools{display:flex;align-items:center;gap:8px}
+.btn{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:7px 14px;font-weight:600;font-size:14px;display:inline-flex;align-items:center;gap:7px}
+.btn:hover{border-color:var(--brand)}
+.btn.live{background:var(--accent);border-color:var(--accent);color:#fff}
+.btn.live i{width:8px;height:8px;border-radius:50%;background:#fff;display:inline-block;animation:pulse 1.4s infinite}
+@keyframes pulse{50%{opacity:.25}}
+.icon-btn{width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--surface);display:grid;place-items:center;font-size:18px}
+.menu-btn{display:none}
+
+/* nav */
+.nav{background:var(--brand);position:sticky;top:env(safe-area-inset-top,0px);z-index:30;box-shadow:0 2px 0 rgba(0,0,0,.08)}
+.nav ul{list-style:none;margin:0;padding:0;display:flex;gap:2px;overflow-x:auto;scrollbar-width:none}
+.nav ul::-webkit-scrollbar{display:none}
+.nav a{display:block;padding:11px 14px;color:var(--brand-ink);font-weight:600;white-space:nowrap}
+.nav a:hover,.nav a.on{background:rgba(255,255,255,.16)}
+.nav li.home a{background:rgba(0,0,0,.18)}
+
+/* ticker */
+.ticker{background:var(--surface);border-bottom:1px solid var(--line)}
+.ticker .wrap{display:flex;align-items:center;gap:12px;height:42px;overflow:hidden}
+.ticker .lbl{background:var(--accent);color:#fff;font-weight:700;padding:3px 12px;border-radius:4px;flex:none}
+.ticker .rail{overflow:hidden;flex:1;mask-image:linear-gradient(90deg,transparent,#000 3%,#000 97%,transparent)}
+.ticker .run{display:inline-flex;gap:42px;white-space:nowrap;animation:slide 60s linear infinite}
+.ticker .run:hover{animation-play-state:paused}
+.ticker .run a::before{content:"";display:inline-block;width:7px;height:7px;background:var(--brand);border-radius:50%;margin-right:10px}
+@keyframes slide{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion: reduce){.ticker .run{animation:none}.btn.live i{animation:none}}
+
+/* thumbnails (placeholder art) */
+.thumb{position:relative;width:100%;aspect-ratio:16/10;border-radius:6px;overflow:hidden;
+  background:linear-gradient(135deg,hsl(var(--h) 42% 36%),hsl(var(--h) 48% 20%));display:grid;place-items:center;color:rgba(255,255,255,.22);
+  font-family:var(--serif);font-weight:800;font-size:64px}
+.thumb::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 80% 15%,rgba(255,255,255,.18),transparent 45%)}
+.thumb.sm{aspect-ratio:4/3;font-size:34px}
+.card{display:block}
+.card .meta{font-size:13px;color:var(--muted);margin-top:4px}
+.tag{display:inline-block;font-size:13px;font-weight:600;color:var(--brand)}
+
+/* hero */
+.hero{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr) minmax(0,.95fr);gap:22px;padding-top:22px}
+.lead .thumb{aspect-ratio:16/10;font-size:110px}
+.lead h2{font-size:30px;margin-top:12px}
+.lead p{color:var(--muted);margin:8px 0 0}
+.stack{display:flex;flex-direction:column;gap:14px}
+.stack .card{display:grid;grid-template-columns:116px 1fr;gap:12px;padding-bottom:14px;border-bottom:1px solid var(--line)}
+.stack .card:last-child{border-bottom:0}
+.stack h3{font-size:17px}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:8px;overflow:hidden;align-self:start}
+.tabs{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--line)}
+.tabs button{border:0;background:var(--soft);padding:10px;font-weight:700}
+.tabs button[aria-selected="true"]{background:var(--surface);box-shadow:inset 0 -3px 0 var(--brand);color:var(--brand)}
+.rank{list-style:none;margin:0;padding:4px 14px 8px;max-height:560px;overflow:auto}
+.rank li{border-bottom:1px solid var(--line)}
+.rank li:last-child{border:0}
+.rank a{display:grid;grid-template-columns:28px 1fr;gap:8px;padding:10px 0;font-weight:500}
+.rank b{color:var(--accent);font-family:var(--serif)}
+
+/* blocks */
+.sec-head{display:flex;align-items:center;justify-content:space-between;border-bottom:2px solid var(--brand);margin-bottom:14px}
+.sec-head h2{background:var(--brand);color:#fff;font-size:18px;padding:5px 16px 5px 14px;clip-path:polygon(0 0,100% 0,calc(100% - 10px) 100%,0 100%)}
+.sec-head a{font-size:14px;font-weight:600;color:var(--brand)}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px;margin-top:30px}
+.block .top{display:grid;grid-template-columns:minmax(0,1fr);gap:10px;margin-bottom:12px}
+.block .top h3{font-size:21px}
+.block ul{list-style:none;margin:0;padding:0}
+.block li a{display:block;padding:9px 0;border-top:1px solid var(--line);font-family:var(--serif);font-weight:500;font-size:16.5px;line-height:1.5}
+.block li a:hover{color:var(--brand)}
+
+.wide{margin-top:34px}
+.reports{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(230px,1fr);gap:16px;overflow-x:auto;padding-bottom:8px;scroll-snap-type:x proximity}
+.reports .card{scroll-snap-align:start}
+.reports h3{font-size:17px;margin-top:8px}
+
+.media{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px;margin-top:34px}
+.vids{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.play{position:absolute;inset:0;display:grid;place-items:center}
+.play span{width:46px;height:46px;border-radius:50%;background:rgba(255,255,255,.92);color:var(--accent);display:grid;place-items:center;font-size:18px;padding-left:3px}
+.vids h4{font-size:15px;margin-top:6px;font-family:var(--serif);font-weight:600}
+
+.side2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px;margin-top:34px}
+.box{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:16px}
+.box h3{font-family:var(--serif);font-size:18px;margin-bottom:10px}
+.poll label{display:flex;align-items:center;gap:10px;padding:8px 0;cursor:pointer}
+.bar{position:relative;height:30px;background:var(--soft);border-radius:5px;overflow:hidden;margin:6px 0;display:flex;align-items:center;padding:0 10px;font-weight:600;font-size:14px}
+.bar i{position:absolute;inset:0 auto 0 0;background:var(--brand);opacity:.28}
+.bar span{position:relative;display:flex;justify-content:space-between;width:100%}
+.vote{background:var(--brand);color:#fff;border:0;border-radius:6px;padding:8px 22px;font-weight:700;margin-top:8px}
+.vote:disabled{opacity:.5;cursor:not-allowed}
+table{width:100%;border-collapse:collapse}
+td{padding:9px 6px;border-bottom:1px solid var(--line)}
+td:last-child{text-align:right;font-weight:700;color:var(--brand)}
+tr.now td{background:var(--soft)}
+
+footer{background:var(--brand-deep);color:#cfe0d6;margin-top:44px;font-size:14.5px}
+footer .wrap{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:28px;padding-top:30px;padding-bottom:26px}
+footer h4{color:#fff;font-size:16px;margin-bottom:8px;font-family:var(--serif)}
+footer a:hover{color:#fff;text-decoration:underline}
+footer .links{display:flex;flex-wrap:wrap;gap:6px 16px}
+footer .copy{border-top:1px solid rgba(255,255,255,.14);text-align:center;padding:12px 16px;font-size:13px}
+
+dialog{border:0;border-radius:10px;padding:0;max-width:min(680px,94vw);width:100%;background:var(--surface);color:var(--ink);box-shadow:0 20px 60px rgba(0,0,0,.35)}
+dialog::backdrop{background:rgba(0,0,0,.55)}
+.dlg{padding:20px 22px 24px}
+.dlg .x{float:right;border:0;background:var(--soft);width:34px;height:34px;border-radius:50%;font-size:18px}
+.dlg h2{font-size:26px;margin:6px 0 10px}
+.dlg .thumb{margin:10px 0 14px}
+.dlg input{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:8px;font:inherit;background:var(--bg);color:var(--ink)}
+.dlg ul{list-style:none;padding:0;margin:12px 0 0;max-height:50vh;overflow:auto}
+.dlg li a{display:block;padding:9px 0;border-bottom:1px solid var(--line);font-family:var(--serif)}
+.empty{color:var(--muted);padding:10px 0}
+
+@media (max-width:1000px){
+  .hero{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+  .hero .panel{grid-column:1/-1}
+  .rank{max-height:none}
+}
+@media (max-width:720px){
+  .grid2,.media,.side2{grid-template-columns:1fr;gap:26px}
+  .hero{grid-template-columns:1fr}
+  .lead h2{font-size:24px}
+  .logo b{font-size:28px}
+  .logo svg{width:38px;height:38px}
+  .btn.hide-sm{display:none}
+  .strip nav{display:none}
+  footer .wrap{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<div class="strip">
+  <div class="wrap">
+    <span id="today">ঢাকা</span>
+    <nav aria-label="উপরের লিংক">
+      <a href="#" data-act="soon">ই-পেপার</a>
+      <a href="#" data-act="soon">আর্কাইভ</a>
+      <a href="#" data-act="soon">English</a>
+      <a href="#" data-act="theme" id="themeBtn">ডার্ক মোড</a>
+    </nav>
+  </div>
+</div>
+
+<header class="mast">
+  <div class="wrap">
+    <a href="#top" class="logo" aria-label="একতার সংবাদ – প্রথম পাতা">
+      <svg viewBox="0 0 64 64" aria-hidden="true">
+        <circle cx="24" cy="26" r="16" fill="#0a5d3a" opacity=".92"/>
+        <circle cx="40" cy="26" r="16" fill="#d62839" opacity=".88"/>
+        <circle cx="32" cy="40" r="16" fill="#16202a" opacity=".85"/>
+      </svg>
+      <span><b>একতার সংবাদ</b><small>ঐক্যের কণ্ঠস্বর, সত্যের সন্ধান</small></span>
+    </a>
+    <div class="tools">
+      <button class="btn live hide-sm" data-act="soon"><i></i>লাইভ</button>
+      <button class="btn hide-sm" data-act="soon">ভিডিও</button>
+      <button class="icon-btn" id="searchBtn" aria-label="অনুসন্ধান">🔍</button>
+    </div>
+  </div>
+</header>
+
+<div class="nav" id="top">
+  <div class="wrap">
+    <ul id="navList"></ul>
+  </div>
+</div>
+
+<div class="ticker">
+  <div class="wrap">
+    <span class="lbl">শিরোনাম</span>
+    <div class="rail"><div class="run" id="run"></div></div>
+  </div>
+</div>
+
+<main class="wrap">
+  <section class="hero" aria-label="প্রধান খবর">
+    <article class="lead" id="lead"></article>
+    <div class="stack" id="stack"></div>
+    <aside class="panel">
+      <div class="tabs" role="tablist">
+        <button role="tab" aria-selected="true" data-tab="latest">সর্বশেষ</button>
+        <button role="tab" aria-selected="false" data-tab="popular">পাঠক প্রিয়</button>
+      </div>
+      <ol class="rank" id="rank"></ol>
+    </aside>
+  </section>
+
+  <div class="grid2" id="blocksA"></div>
+
+  <section class="wide">
+    <div class="sec-head"><h2>বিশেষ প্রতিবেদন</h2><a href="#" data-act="soon">আরও</a></div>
+    <div class="reports" id="reports"></div>
+  </section>
+
+  <div class="grid2" id="blocksB"></div>
+
+  <div class="media">
+    <section>
+      <div class="sec-head"><h2>ভিডিও</h2><a href="#" data-act="soon">আরও</a></div>
+      <div class="vids" id="vids"></div>
+    </section>
+    <section>
+      <div class="sec-head"><h2>ছবি</h2><a href="#" data-act="soon">আরও</a></div>
+      <div class="vids" id="pics"></div>
+    </section>
+  </div>
+
+  <div class="side2">
+    <section class="box poll">
+      <h3>অনলাইন জরিপ</h3>
+      <p id="pollQ" style="margin:0 0 8px;font-family:var(--serif);font-weight:600">শীতকালীন ছুটি বাড়ানো কি যৌক্তিক হবে বলে আপনি মনে করেন?</p>
+      <div id="pollBody"></div>
+    </section>
+    <section class="box">
+      <h3>নামাজের সময়সূচি</h3>
+      <table id="prayer"></table>
+    </section>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <h4>একতার সংবাদ</h4>
+      <p style="margin:0 0 8px">ঐক্যের কণ্ঠস্বর, সত্যের সন্ধান। দেশ ও বিশ্বের সর্বশেষ খবর সবার আগে, সবার জন্য।</p>
+      <p style="margin:0">প্রধান সম্পাদক: <b>আপনার নাম</b><br>ঠিকানা: আপনার অফিসের ঠিকানা<br>ই-মেইল: info@example.com</p>
+    </div>
+    <div>
+      <h4>বিভাগ</h4>
+      <div class="links" id="footCats"></div>
+    </div>
+    <div>
+      <h4>যোগাযোগ</h4>
+      <div class="links">
+        <a href="#" data-act="soon">আমাদের সম্পর্কে</a><a href="#" data-act="soon">বিজ্ঞাপন</a>
+        <a href="#" data-act="soon">গোপনীয়তা নীতি</a><a href="#" data-act="soon">ব্যবহারের শর্ত</a>
+        <a href="#" data-act="soon">ফেসবুক</a><a href="#" data-act="soon">ইউটিউব</a>
+      </div>
+    </div>
+  </div>
+  <div class="copy">© স্বত্বাধিকার সংরক্ষিত ২০২৬ | একতার সংবাদ</div>
+</footer>
+
+<dialog id="dlg"><div class="dlg" id="dlgBody"></div></dialog>
+
+<script>
+(function(){
+  var BN="০১২৩৪৫৬৭৮৯";
+  function bn(n){return String(n).replace(/\d/g,function(d){return BN[d]})}
+
+  /* ---------- ডেটা (নমুনা – পরে আপনার আসল খবর দিয়ে বদলে নেবেন) ---------- */
+  var CATS=[
+    {k:"national",n:"জাতীয়",h:150},{k:"politics",n:"রাজনীতি",h:215},{k:"capital",n:"রাজধানী",h:25},
+    {k:"country",n:"দেশজুড়ে",h:95},{k:"economy",n:"অর্থনীতি",h:42},{k:"international",n:"আন্তর্জাতিক",h:262},
+    {k:"entertainment",n:"বিনোদন",h:328},{k:"sports",n:"খেলা",h:130},{k:"lifestyle",n:"লাইফস্টাইল",h:10},
+    {k:"technology",n:"তথ্যপ্রযুক্তি",h:200},{k:"education",n:"শিক্ষা",h:176},{k:"probash",n:"প্রবাস",h:282},
+    {k:"jobs",n:"চাকরি",h:60},{k:"religion",n:"ধর্ম",h:160},{k:"opinion",n:"মুক্তমত",h:310}
+  ];
+  var CM={};CATS.forEach(function(c){CM[c.k]=c});
+
+  var NEWS={
+    national:["রাজধানীতে নতুন বাস রুট চালু, যাত্রী ভোগান্তি কমার আশা","সারা দেশে আগামী সপ্তাহে হালকা বৃষ্টির পূর্বাভাস","সড়ক নিরাপত্তায় নতুন নির্দেশনা জারি","বিদ্যুৎ সরবরাহ স্বাভাবিক রাখতে বিশেষ উদ্যোগ","নদীভাঙন রোধে ৫০ কোটি টাকার প্রকল্প অনুমোদন"],
+    politics:["সংসদের আগামী অধিবেশনের সূচি ঘোষণা","স্থানীয় সরকার নির্বাচন নিয়ে দলগুলোর প্রস্তুতি","সর্বদলীয় বৈঠকে সংস্কার প্রস্তাব নিয়ে আলোচনা","তৃণমূল পর্যায়ে সমন্বয় সভা অনুষ্ঠিত","নির্বাচন কমিশনের সঙ্গে দলগুলোর মতবিনিময়"],
+    economy:["রপ্তানি আয়ে ধারাবাহিক প্রবৃদ্ধি","শেয়ারবাজারে লেনদেন বেড়েছে","নিত্যপণ্যের বাজারে নজরদারি জোরদার","ডলারের বিপরীতে টাকার বিনিময় হার স্থিতিশীল","কৃষিঋণ বিতরণে নতুন নীতিমালা"],
+    international:["জলবায়ু সম্মেলনে উন্নয়নশীল দেশগুলোর নতুন দাবি","মধ্যপ্রাচ্যে শান্তি আলোচনা আবার শুরু","বৈশ্বিক জ্বালানির বাজারে অস্থিরতা","এশিয়ার কয়েকটি দেশের মধ্যে বাণিজ্য চুক্তি স্বাক্ষর","জাতিসংঘে মানবিক সহায়তা বাড়ানোর আহ্বান"],
+    sports:["টেস্টের শেষ দিনে জয়ের আশায় স্বাগতিকরা","ফুটবল লিগে শীর্ষে উঠল ঢাকার দল","নারী ক্রিকেট দলের অনুশীলন শুরু","আসন্ন টুর্নামেন্টের সময়সূচি প্রকাশ","স্কুল পর্যায়ের ক্রীড়া প্রতিযোগিতা শুরু"],
+    entertainment:["নতুন নাটকের শুটিং শুরু, থাকছে তারকাদের মেলা","সিনেমা হলে ফিরছে দর্শক","শীতকালীন সংগীত উৎসবের প্রস্তুতি","প্রয়াত শিল্পীর স্মরণে আলোচনা সভা","ওটিটিতে আসছে নতুন ওয়েব সিরিজ"],
+    lifestyle:["শীতের আগে ত্বকের যত্নে ৫ টিপস","সকালের নাশতায় রাখুন প্রোটিন","ঘুম ভালো করতে মেনে চলুন ৭ নিয়ম","ঘরে বসেই করুন সহজ ব্যায়াম","ভ্রমণের আগে জেনে নিন জরুরি বিষয়"],
+    technology:["স্মার্টফোনের ব্যাটারি ভালো রাখার উপায়","সাইবার নিরাপত্তায় সচেতনতা বাড়ানোর আহ্বান","দেশীয় স্টার্টআপে বিনিয়োগ বাড়ছে","কৃত্রিম বুদ্ধিমত্তা নিয়ে কর্মশালা","ইন্টারনেটের গতি বাড়াতে নতুন উদ্যোগ"],
+    education:["পরীক্ষার সময়সূচি প্রকাশ করেছে বোর্ড","বিশ্ববিদ্যালয়ে ভর্তি আবেদন শুরু","শিক্ষার্থীদের জন্য বৃত্তির আবেদন চলছে","ক্যাম্পাসে বইমেলা শুরু","প্রাথমিক শিক্ষক নিয়োগে নতুন বিজ্ঞপ্তি"],
+    probash:["প্রবাসী আয় বেড়েছে টানা তিন মাস","বিদেশে কর্মী পাঠাতে নতুন চুক্তি","দূতাবাসে সেবা সহজ করতে ডিজিটাল উদ্যোগ","প্রবাসীদের জন্য বিশেষ হেল্পলাইন চালু","কমিউনিটি মেলায় প্রবাসীদের মিলনমেলা"],
+    capital:["রাজধানীর যানজট কমাতে নতুন পরিকল্পনা","আজ যেসব এলাকায় বিদ্যুৎ বন্ধ থাকবে","নগরীর খাল পরিষ্কারে বিশেষ অভিযান"],
+    country:["ময়মনসিংহে কৃষকদের মধ্যে সার বিতরণ","নদীতে মা ইলিশ রক্ষায় অভিযান","উপজেলায় নতুন সেতুর উদ্বোধন"]
+  };
+  var specials=[
+    ["বন্যার পর নতুন করে ঘর বাঁধছে ওরা","country"],["একটি স্কুলের ১০০ বছরের গল্প","education"],
+    ["শহরের ছাদে সবজি চাষ, বদলে যাচ্ছে জীবন","lifestyle"],["হারিয়ে যাওয়া লোকশিল্প ফিরছে নতুন প্রজন্মের হাতে","entertainment"],
+    ["প্রবাসীর পাঠানো টাকায় বদলে গেল গ্রাম","probash"],["ক্ষুদ্র উদ্যোক্তাদের লড়াইয়ের গল্প","economy"]
+  ];
+
+  var ALL=[],id=0;
+  function add(cat,title,extra){var s={id:++id,cat:cat,title:title,ago:(id*7)%55+3,x:extra||""};ALL.push(s);return s}
+  var byCat={};
+  Object.keys(NEWS).forEach(function(k){byCat[k]=NEWS[k].map(function(t){return add(k,t)})});
+  var reports=specials.map(function(s){return add(s[1],s[0],"special")});
+
+  /* ---------- ছোট হেল্পার ---------- */
+  function $(s,r){return (r||document).querySelector(s)}
+  function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+  function agoTxt(m){return m<60?bn(m)+" মিনিট আগে":bn(Math.round(m/60))+" ঘণ্টা আগে"}
+  function thumb(s,cls){var c=CM[s.cat];return '<div class="thumb '+(cls||"")+'" style="--h:'+c.h+'">'+c.n.charAt(0)+'</div>'}
+  function link(s,inner,cls){return '<a href="#" class="'+(cls||"")+'" data-id="'+s.id+'">'+inner+'</a>'}
+  function find(i){return ALL.filter(function(s){return s.id==i})[0]}
+
+  /* ---------- তারিখ ---------- */
+  try{
+    var d=new Date();
+    var wd=new Intl.DateTimeFormat("bn-BD",{weekday:"long"}).format(d);
+    var dt=new Intl.DateTimeFormat("bn-BD",{day:"numeric",month:"long",year:"numeric"}).format(d);
+    $("#today").textContent="ঢাকা  "+wd+", "+dt;
+  }catch(e){$("#today").textContent="ঢাকা"}
+
+  /* ---------- নেভিগেশন ---------- */
+  var nav='<li class="home"><a href="#top" aria-label="প্রথম পাতা">🏠</a></li>';
+  CATS.forEach(function(c){var has=!!document.getElementById('sec-'+c.k)||['national','politics','economy','international','sports','entertainment','lifestyle','technology','education','probash'].indexOf(c.k)>-1;nav+='<li><a href="'+(has?'#sec-'+c.k:'#')+'" data-cat="'+c.k+'"'+(has?'':' data-act="soon"')+'>'+c.n+'</a></li>'});
+  $("#navList").innerHTML=nav;
+  $("#footCats").innerHTML=CATS.map(function(c){return '<a href="#sec-'+c.k+'">'+c.n+'</a>'}).join("");
+
+  /* ---------- টিকার ---------- */
+  var heads=ALL.filter(function(s){return !s.x}).slice(0,16);
+  var tk=heads.map(function(s){return link(s,esc(s.title))}).join("");
+  $("#run").innerHTML=tk+tk;
+
+  /* ---------- হিরো ---------- */
+  var leadS=byCat.national[0];
+  $("#lead").innerHTML=link(leadS,thumb(leadS)+'<h2 class="t">'+esc(leadS.title)+'</h2>','card')+
+    '<p>'+esc("এখানে প্রধান খবরের সংক্ষিপ্ত ভূমিকা থাকবে। আপনার আসল সংবাদ যোগ করলে এই অংশে প্রথম দুই-তিন লাইন দেখা যাবে।")+'</p>';
+  var side=[byCat.politics[0],byCat.economy[0],byCat.sports[0],byCat.international[0],byCat.entertainment[0]];
+  $("#stack").innerHTML=side.map(function(s){
+    return link(s,thumb(s,"sm")+'<div><span class="tag">'+CM[s.cat].n+'</span><h3 class="t">'+esc(s.title)+'</h3><div class="meta">'+agoTxt(s.ago)+'</div></div>','card');
+  }).join("");
+
+  /* ---------- সর্বশেষ / পাঠক প্রিয় ---------- */
+  var latest=ALL.filter(function(s){return !s.x}).sort(function(a,b){return a.ago-b.ago}).slice(0,14);
+  var popular=ALL.filter(function(s){return !s.x}).sort(function(a,b){return (b.id*37%23)-(a.id*37%23)}).slice(0,14);
+  function drawRank(list){
+    $("#rank").innerHTML=list.map(function(s,i){return '<li>'+link(s,'<b>'+bn(i+1)+'</b><span>'+esc(s.title)+'</span>')+'</li>'}).join("");
+  }
+  drawRank(latest);
+  document.querySelectorAll(".tabs button").forEach(function(b){
+    b.addEventListener("click",function(){
+      document.querySelectorAll(".tabs button").forEach(function(x){x.setAttribute("aria-selected",x===b)});
+      drawRank(b.dataset.tab==="latest"?latest:popular);
+    });
+  });
+
+  /* ---------- বিভাগ ভিত্তিক ব্লক ---------- */
+  function block(k){
+    var c=CM[k],list=byCat[k];
+    return '<section class="block" id="sec-'+k+'"><div class="sec-head"><h2>'+c.n+'</h2><a href="#" data-act="soon">আরও</a></div>'+
+      '<div class="top">'+link(list[0],thumb(list[0],"sm")+'<h3 class="t" style="margin-top:8px">'+esc(list[0].title)+'</h3><div class="meta">'+agoTxt(list[0].ago)+'</div>','card')+'</div>'+
+      '<ul>'+list.slice(1,5).map(function(s){return '<li>'+link(s,esc(s.title))+'</li>'}).join("")+'</ul></section>';
+  }
+  $("#blocksA").innerHTML=["national","politics","economy","international"].map(block).join("");
+  $("#blocksB").innerHTML=["sports","entertainment","lifestyle","technology","education","probash"].map(block).join("");
+
+  /* ---------- বিশেষ প্রতিবেদন ---------- */
+  $("#reports").innerHTML=reports.map(function(s){
+    return link(s,thumb(s)+'<span class="tag" style="margin-top:8px">বিশেষ প্রতিবেদন</span><h3 class="t">'+esc(s.title)+'</h3>','card');
+  }).join("");
+
+  /* ---------- ভিডিও ও ছবি ---------- */
+  var vt=["সন্ধ্যার সংবাদ","জেলা সংবাদ","দুপুরের সংবাদ","মধ্যাহ্নের সংবাদ"];
+  $("#vids").innerHTML=vt.map(function(t,i){
+    var h=CATS[i*3].h;
+    return '<a href="#" data-act="soon"><div class="thumb sm" style="--h:'+h+'"><div class="play"><span>▶</span></div></div><h4>'+t+'</h4></a>';
+  }).join("");
+  var pt=["প্রকৃতির রূপে অপরূপ বাংলাদেশ","শরতের কাশফুল","নদীর পাড়ের জীবন","শহরের ভোর"];
+  $("#pics").innerHTML=pt.map(function(t,i){
+    return '<a href="#" data-act="soon"><div class="thumb sm" style="--h:'+CATS[i*3+1].h+'">'+bn(i+1)+'</div><h4>'+t+'</h4></a>';
+  }).join("");
+
+  /* ---------- জরিপ ---------- */
+  var votes={yes:93,no:41,none:6},voted=false;
+  function drawPoll(){
+    var tot=votes.yes+votes.no+votes.none,box=$("#pollBody");
+    if(!voted){
+      box.innerHTML='<form onsubmit="return false">'+
+        '<label><input type="radio" name="p" value="yes"> হ্যাঁ</label>'+
+        '<label><input type="radio" name="p" value="no"> না</label>'+
+        '<label><input type="radio" name="p" value="none"> মন্তব্য নেই</label>'+
+        '<button class="vote" disabled id="voteBtn">ভোট দিন</button></form>';
+      box.querySelectorAll("input").forEach(function(r){r.addEventListener("change",function(){$("#voteBtn").disabled=false})});
+      $("#voteBtn").addEventListener("click",function(){
+        var v=box.querySelector("input:checked");if(!v)return;
+        votes[v.value]++;voted=true;drawPoll();
+      });
+    }else{
+      var names={yes:"হ্যাঁ",no:"না",none:"মন্তব্য নেই"};
+      box.innerHTML=Object.keys(names).map(function(k){
+        var p=Math.round(votes[k]/tot*1000)/10;
+        return '<div class="bar"><i style="width:'+p+'%"></i><span><span>'+names[k]+'</span><span>'+bn(p)+'%</span></span></div>';
+      }).join("")+'<div class="meta" style="color:var(--muted);font-size:13px">মোট ভোটার: '+bn(tot)+' জন। ধন্যবাদ!</div>';
+    }
+  }
+  drawPoll();
+
+  /* ---------- নামাজের সময় (নমুনা) ---------- */
+  var pr=[["ফজর","ভোর","০৫:২৩"],["জোহর","দুপুর","১২:০৭"],["আসর","বিকেল","০৩:৫৬"],["মাগরিব","সন্ধ্যা","০৫:৩২"],["ইশা","রাত","০৬:৪৭"]];
+  $("#prayer").innerHTML=pr.map(function(r,i){return '<tr'+(i==1?' class="now"':'')+'><td>'+r[0]+'</td><td style="color:var(--muted)">'+r[1]+'</td><td>'+r[2]+'</td></tr>'}).join("");
+
+  /* ---------- সংবাদ পড়ার ডায়ালগ ও অনুসন্ধান ---------- */
+  var dlg=$("#dlg"),dbody=$("#dlgBody");
+  function open(html){dbody.innerHTML=html;if(!dlg.open)dlg.showModal();var x=$(".x",dbody);if(x)x.addEventListener("click",function(){dlg.close()})}
+  function openStory(s){
+    var c=CM[s.cat];
+    open('<button class="x" aria-label="বন্ধ করুন">✕</button><span class="tag">'+c.n+'</span><h2 class="t">'+esc(s.title)+'</h2>'+
+      '<div class="meta" style="color:var(--muted);font-size:14px">'+agoTxt(s.ago)+' · একতার সংবাদ ডেস্ক</div>'+thumb(s)+
+      '<p>এটি একটি নমুনা সংবাদ। এখানে আপনার আসল সংবাদের পূর্ণাঙ্গ বিবরণ থাকবে। সংবাদ যোগ করার জন্য কনটেন্ট ম্যানেজমেন্ট (অ্যাডমিন প্যানেল) যুক্ত করা হলে সম্পাদক সরাসরি এখান থেকে ছবিসহ খবর প্রকাশ করতে পারবেন।</p>');
+  }
+  function openSearch(){
+    open('<button class="x" aria-label="বন্ধ করুন">✕</button><h2 class="t" style="font-size:22px">খবর খুঁজুন</h2>'+
+      '<input id="q" type="search" placeholder="যেমন: বাজার, শিক্ষা, খেলা…" autocomplete="off"><ul id="res"></ul>');
+    var q=$("#q"),res=$("#res");
+    function run(){
+      var v=q.value.trim(),list=v?ALL.filter(function(s){return s.title.indexOf(v)>-1||CM[s.cat].n.indexOf(v)>-1}):ALL.slice(0,8);
+      res.innerHTML=list.length?list.map(function(s){return '<li>'+link(s,esc(s.title))+'</li>'}).join(""):'<li class="empty">"'+esc(v)+'" নিয়ে কোনো খবর পাওয়া যায়নি। অন্য শব্দ দিয়ে খুঁজে দেখুন।</li>';
+    }
+    q.addEventListener("input",run);run();q.focus();
+  }
+  $("#searchBtn").addEventListener("click",openSearch);
+  dlg.addEventListener("click",function(e){if(e.target===dlg)dlg.close()});
+
+  document.addEventListener("click",function(e){
+    var a=e.target.closest("a,button");if(!a)return;
+    if(a.dataset.id){e.preventDefault();openStory(find(a.dataset.id));return}
+    if(a.dataset.act==="soon"){e.preventDefault();open('<button class="x" aria-label="বন্ধ করুন">✕</button><h2 class="t">শিগগিরই আসছে</h2><p>এই পেজটি এখনো যুক্ত করা হয়নি। পরের ধাপে এটি তৈরি করা হবে।</p>');return}
+    if(a.dataset.act==="theme"){
+      e.preventDefault();
+      var r=document.documentElement,dark=getComputedStyle(r).getPropertyValue("--bg").trim()==="#0e1412";
+      r.setAttribute("data-theme",dark?"light":"dark");
+      a.textContent=dark?"ডার্ক মোড":"লাইট মোড";
+    }
+  });
+
+  /* নেভ হাইলাইট */
+  var links=document.querySelectorAll(".nav a[data-cat]");
+  links.forEach(function(l){l.addEventListener("click",function(){links.forEach(function(x){x.classList.remove("on")});l.classList.add("on")})});
+})();
+</script>
+</body>
+</html>
